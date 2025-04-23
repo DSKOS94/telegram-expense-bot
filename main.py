@@ -1,4 +1,6 @@
-
+import base64
+import os
+from cryptography.fernet import Fernet
 import asyncio
 import os
 import gspread
@@ -76,7 +78,10 @@ async def add_expense(update: Update, context: CallbackContext):
         await update.message.reply_text(f"❌ Ошибка при добавлении! {str(e)}")
 
 async def start_bot():
-    TOKEN = "7329695886:AAG7kIQ2FbcalO7VwziiITLbvW-NOXy1QJ8"
+    encrypted_token = b"gAAAAABoCNyVjF4InjRw32UmXpIj8NOvkWLi0Fw_WXCNGv5BsHg51IUTfSPAAOfQMDLEOIWj_T2bEEPVl1ixkOm0G2aCm5dAwp7A6CEY4FlduTnZVSqs0SXh6J786e9rNVsWWSiCWvai"
+key = os.environ.get("ENCRYPTION_KEY").encode()
+cipher = Fernet(key)
+TOKEN = cipher.decrypt(encrypted_token).decode()
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("add_expense", add_expense))
 
