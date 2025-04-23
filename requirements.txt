@@ -2,4 +2,4 @@ python-telegram-bot==20.7
 gspread
 oauth2client
 nest_asyncio
-cryptography
+cryptography==41.0.3
