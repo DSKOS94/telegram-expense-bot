@@ -82,15 +82,15 @@ async def start_bot():
 key = os.environ.get("ENCRYPTION_KEY").encode()
 cipher = Fernet(key)
 TOKEN = cipher.decrypt(encrypted_token).decode()
-    app = Application.builder().token(TOKEN).build()
-    app.add_handler(CommandHandler("add_expense", add_expense))
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler("add_expense", add_expense))
 
-    print("⏳ Бот запускается...")
-    await app.initialize()
-    await app.start()
-    print("✅ Бот запущен! Ожидаю команды...")
-    await app.updater.start_polling()
-    await asyncio.Event().wait()
+print("⏳ Бот запускается...")
+await app.initialize()
+await app.start()
+print("✅ Бот запущен! Ожидаю команды...")
+await app.updater.start_polling()
+await asyncio.Event().wait()
 
 # Гибкий запуск без ошибки закрытия event loop
 def run():
