@@ -1,5 +1,7 @@
+gspread==5.8.0
+nest_asyncio==1.5.4
+cryptography==39.0.1
+google-auth==2.18.0
+google-auth-oauthlib==0.4.6
+google-api-python-client==2.60.0
 python-telegram-bot==20.7
-gspread
-oauth2client
-nest_asyncio
-cryptography==41.0.3
