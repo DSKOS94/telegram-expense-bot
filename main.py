@@ -76,7 +76,7 @@ async def add_expense(update: Update, context: CallbackContext):
         await update.message.reply_text(f"❌ Ошибка при добавлении! {str(e)}")
 
 async def start_bot():
-    TOKEN = "7329695886:AAFXz9Q6jp4KfFDCvuBT_btKZk1zFO5k1LE"
+    TOKEN = "7329695886:AAG7kIQ2FbcalO7VwziiITLbvW-NOXy1QJ8"
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("add_expense", add_expense))
 
